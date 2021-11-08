@@ -1,4 +1,5 @@
 from sqlalchemy.sql import func
+from flask_login import UserMixin
 
 from . import db
 
@@ -10,7 +11,7 @@ class Todo(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(150))
     email = db.Column(db.String(150))

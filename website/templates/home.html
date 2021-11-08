@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1 align="center">Your todos list</h1>
+<ul class="list-group list-group-flush" id="todos">
+    {% for todo in user.todos %}
+    <li class="list-group-item">{{ todo.title }}
+    </li>
+    {% endfor %}
+</ul>
+<form method="POST">
+    <textarea name="todo" id="todo" class="form-control">
+    </textarea>
+    <br/>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Todo</button>
+    </div>
+</form>
+{% endblock %}

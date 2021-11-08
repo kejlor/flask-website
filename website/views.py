@@ -13,10 +13,10 @@ def home():
     if request.method == 'POST':
         todo = request.form.get('todo')
 
-        if len(todo) < 1:
+        if len(todo.title()) < 1:
             flash('Todo title is too short!', category='error')
         else:
-            new_todo = Todo(data=todo, user_id=current_user.id)
+            new_todo = Todo(title=todo, user_id=current_user.id)
             db.session.add(new_todo)
             db.session.commit()
             flash('Todo added!', category='success')
